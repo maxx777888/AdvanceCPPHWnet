@@ -34,15 +34,18 @@ int main()
 	bool is_int = std::holds_alternative<int>(res);//Получили int
 	bool is_string = std::holds_alternative<std::string>(res);//Получили string
 	bool is_vector= std::holds_alternative<std::vector<int>>(res);//Получили vector
+	std::string count_str = "";
 
 	if (is_int) //Обрабатывается int
 	{
 		std::cout << (std::get<int>(res) * 2) << std::endl;
+		count_str = "integer";
 	}
 
 	if (is_string) //Обрабатывается string
 	{
 		std::cout << std::get<std::string>(res) << std::endl;
+		count_str = "string";
 	}
 
 	if (is_vector) //Обрабатывается vector
@@ -53,7 +56,9 @@ int main()
 			std::cout << n << " ";
 		}
 		std::cout << std::endl;
+		count_str = "vector";
 	}
+	std::cout << count_str << std::endl;
 }
 
 
