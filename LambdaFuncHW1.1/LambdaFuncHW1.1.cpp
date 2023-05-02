@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include<algorithm>
 #include <vector>
 
 int main()
@@ -11,14 +12,26 @@ int main()
 
     // Выводим начальные данные на экран
     std::cout << "Входные данные: ";
-    for (int n : v) {
+    std::for_each(v.begin(), v.end(), [](int n) {
         std::cout << n << " ";
-    }
+        });
     std::cout << std::endl;
   
     // Выводим конечные данные на экран
-    auto func = [v]() {
-        std::cout << "Выходные данные: ";
+    std::cout << "Выходные данные: ";
+    std::for_each(v.begin(), v.end(), [](int n) {
+        if (n % 2 == 0)
+            std::cout << n << " ";
+        else
+            std::cout << (n * 3) << " ";
+        });
+
+    /*for (int n : v) {
+        std::cout << n << " ";
+    }*/
+
+  /*  auto func = [v]() {
+        
         for (int n : v) {
             if (n % 2 == 0)
                 std::cout << n << " ";
@@ -26,7 +39,7 @@ int main()
                 std::cout << (n * 3) << " ";
         }
     };
-    func();
+    func();*/
     
     
 
