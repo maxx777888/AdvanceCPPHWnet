@@ -1,0 +1,9 @@
+C:/Users/judoo/OneDrive/Рабочий стол/My_Projects_VS/AdvanceCPPHWnet/CheckTheBasicFuncListHW4.1CMake/out/build/x64-debug/CMakeFiles/MyTest1.dir
+C:/Users/judoo/OneDrive/Рабочий стол/My_Projects_VS/AdvanceCPPHWnet/CheckTheBasicFuncListHW4.1CMake/out/build/x64-debug/CMakeFiles/edit_cache.dir
+C:/Users/judoo/OneDrive/Рабочий стол/My_Projects_VS/AdvanceCPPHWnet/CheckTheBasicFuncListHW4.1CMake/out/build/x64-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/judoo/OneDrive/Рабочий стол/My_Projects_VS/AdvanceCPPHWnet/CheckTheBasicFuncListHW4.1CMake/out/build/x64-debug/Catch2-build/CMakeFiles/edit_cache.dir
+C:/Users/judoo/OneDrive/Рабочий стол/My_Projects_VS/AdvanceCPPHWnet/CheckTheBasicFuncListHW4.1CMake/out/build/x64-debug/Catch2-build/CMakeFiles/rebuild_cache.dir
+C:/Users/judoo/OneDrive/Рабочий стол/My_Projects_VS/AdvanceCPPHWnet/CheckTheBasicFuncListHW4.1CMake/out/build/x64-debug/Catch2-build/src/CMakeFiles/Catch2.dir
+C:/Users/judoo/OneDrive/Рабочий стол/My_Projects_VS/AdvanceCPPHWnet/CheckTheBasicFuncListHW4.1CMake/out/build/x64-debug/Catch2-build/src/CMakeFiles/Catch2WithMain.dir
+C:/Users/judoo/OneDrive/Рабочий стол/My_Projects_VS/AdvanceCPPHWnet/CheckTheBasicFuncListHW4.1CMake/out/build/x64-debug/Catch2-build/src/CMakeFiles/edit_cache.dir
+C:/Users/judoo/OneDrive/Рабочий стол/My_Projects_VS/AdvanceCPPHWnet/CheckTheBasicFuncListHW4.1CMake/out/build/x64-debug/Catch2-build/src/CMakeFiles/rebuild_cache.dir
