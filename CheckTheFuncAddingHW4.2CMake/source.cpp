@@ -105,7 +105,7 @@ TEST_CASE("List.Method checking")
 {
     List my_list;
 
-    SECTION("Pure PushBack check") {
+    SECTION("Pure PushBack && PopBack check") {
         REQUIRE(my_list.Empty() == 1);//Проверка что List пустой
 
         my_list.PushBack(66);//Добавляю один элемент в конец
@@ -126,7 +126,7 @@ TEST_CASE("List.Method checking")
        // CHECK(my_list.PopBack() == 0);
     }
 
-    SECTION("Pure PushFront check") {
+    SECTION("Pure PushFront && PopFront check") {
 
         REQUIRE(my_list.Empty() == 1);//Проверка что List пустой
 
@@ -152,7 +152,7 @@ TEST_CASE("List.Method checking")
 
     }
 
-    SECTION("Mixed PushFront && PushBack check") {
+    SECTION("Mixed Push || Pop Front && Push || Pop Back check") {
 
         REQUIRE(my_list.Empty() == 1);//Проверка что List пустой
 
@@ -198,8 +198,11 @@ TEST_CASE("Tests on an empty list") {
     List lst;
     REQUIRE(lst.Empty() == 1);//Проверка списка на отсутствие элементов 
     INFO("Throwing an error");
-    CHECK(lst.PopBack() == 0);//Так как лист пустой должно выкинуть ошибку
-    CHECK(lst.PopFront() == 0);//Так как лист пустой должно выкинуть ошибку
+    CHECK_THROWS(lst.PopBack() == 0);//Так как лист пустой проверка на ошибку
+    CHECK_THROWS(lst.PopFront() == 0);//Так как лист пустой проверка на ошибку
+
+    REQUIRE_THROWS(lst.PopBack() == 0);//Тут обязательно должно выкинуть ошибку
+    REQUIRE_THROWS(lst.PopFront() == 0);//Тут обязательно должно выкинуть ошибку
 }
 
 int main(int argc, char* argv[]) {
