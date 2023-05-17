@@ -9,6 +9,7 @@
 /FileContentIndex
 /v17
 /ut/build/x64-debug
+/out
 *.vsidx
 *.lock
 *.sue
