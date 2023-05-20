@@ -1,18 +1,22 @@
 ﻿#include <iostream>
+#include <string>
 
 template<class T> 
 class MyVector 
 {
 public:
-	
+		
 	MyVector();//Почему-то VS выдает предупреждение, что не найдено определение функции MyVector
+	
+	MyVector<T>(const MyVector<T>& rhs);
+
 	~MyVector();//Почему-то VS предупреждение, что не найдено определение функции ~MyVector
 
 	void push_back(T value);//Метод добавлят новый элемент 
 	T at(int index);//Метод возвращает значение из ячейке по индексу
 	int size();//Метод возвращает кол-во элементов
 	int capacity();//Метод возвращает кол-во свободных ячеек до момента расширения памяти
-	MyVector& operator=(MyVector& rhs);//Метод перегрузки оператора присваивания
+	MyVector& operator=(const MyVector& rhs);//Метод перегрузки оператора присваивания
 
 private:
 	T* vec;//Вектор
@@ -68,7 +72,28 @@ T MyVector<T>::at(int index)
 
 }
 template<class T>
-MyVector<T>& MyVector<T>::operator=(MyVector<T>& rhs) {
+MyVector<T>::MyVector(const MyVector<T>& rhs)
+{
+
+	vec = new T[capacityVec];//Создаем новый вектор
+	sizeVec = rhs.sizeVec;//Передаем кол-во ячеек уже занятых
+	capacityVec = rhs.capacityVec;//Передаем размер памяти вектора новому объекту
+	
+
+	for (int i = 0; i < sizeVec; i++)//Передаем значение элементов новому вектору
+	{
+		vec[i] = rhs.vec[i];
+	}
+}
+
+
+template<class T>
+ MyVector<T>& MyVector<T>::operator=(const MyVector<T>& rhs) {
+
+	if (this == &rhs) {//Добавил часть где вектор присваивается сам себе. 
+		return *this;
+	}
+		
 	if (vec != nullptr) {//Проверка на инициализацию
 		delete[] vec;//Очищаем динамическую памать
 	}
@@ -133,6 +158,8 @@ int main()
 		}
 		std::cout << std::endl;
 
+		v = v;//Проверка на присвоение самого себя
+
 		std::cout << "Printing the old vector on the screen to make sure that it still exists" << std::endl;
 		std::cout << "The Old Vector = {";
 		for (int i = 0; i < v.size(); i++) {
@@ -141,6 +168,40 @@ int main()
 			}
 			else {
 				std::cout << v.at(i) << ", ";
+			}
+		}
+		std::cout << std::endl;
+
+		MyVector <std::string> v1;
+		v1.push_back("THE CREATED VECTOR");
+		MyVector <std::string> v2(v1);
+
+		std::cout << "Printing the vector created from another vector" << std::endl;
+		std::cout << "The V2= {";
+		for (int i = 0; i < v2.size(); i++) {
+			if (i == v2.size() - 1) {
+				std::cout << v2.at(i) << "}";
+			}
+			else {
+				std::cout << v2.at(i) << ", ";
+			}
+		}
+		std::cout << std::endl;
+
+		const MyVector<double> object;
+		MyVector<double> a = object;
+		a.push_back(11.11);
+		a.push_back(22.22);
+		a.push_back(33.33);
+
+		std::cout << "Printing the const vector" << std::endl;
+		std::cout << "const a vector = {";
+		for (int i = 0; i < a.size(); i++) {
+			if (i == a.size() - 1) {
+				std::cout << a.at(i) << "}";
+			}
+			else {
+				std::cout << a.at(i) << ", ";
 			}
 		}
 		std::cout << std::endl;
