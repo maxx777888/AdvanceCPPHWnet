@@ -13,6 +13,7 @@ public:
 	T at(int index);//Метод возвращает значение из ячейке по индексу
 	int size();//Метод возвращает кол-во элементов
 	int capacity();//Метод возвращает кол-во свободных ячеек до момента расширения памяти
+	MyVector& operator=(MyVector& rhs);//Метод перегрузки оператора присваивания
 
 private:
 	T* vec;//Вектор
@@ -30,7 +31,9 @@ MyVector<T>::MyVector()//Конструктор
 template<class T>
 MyVector<T>::~MyVector()//Деструктор
 {
-	delete[] vec;
+	if (vec != nullptr) {
+		delete[] vec;
+	}	
 }
 
 template<class T>
@@ -64,6 +67,20 @@ T MyVector<T>::at(int index)
 		throw std::runtime_error("The is no such index in the vector!!!");
 	}
 
+}
+template<class T>
+MyVector<T>& MyVector<T>::operator=(MyVector<T>& rhs) {
+	if (vec != nullptr) {//Проверка на инициализацию
+		delete[] vec;//Очищаем динамическую памать
+	}
+	sizeVec = rhs.sizeVec;//Передаем кол-во ячеек уже занятых
+	capacityVec = rhs.capacityVec;//Передаем размер памяти вектора новому объекту
+	vec = new T[capacityVec];//Создаем новый вектор
+
+	for (int i = 0; i < sizeVec; i++) {//Передаем значение элементов новому вектору
+		vec[i] = rhs.vec[i];
+	}
+	return *this;
 }
 
 template<class T>
@@ -100,6 +117,34 @@ int main()
 				std::cout << v.at(i) << ", ";
 			}	
 		}
+		std::cout << std::endl;
+		MyVector <int> newV;//Создаю новый вектор
+		newV = v;//Присваиваю значения от предыдущего вектора
+		newV.push_back(6);//Добавляю новые элементы
+		newV.push_back(7);//Добавляю новые элементы
+		newV.push_back(8);//Добавляю новые элементы
+		std::cout << "New vector = {";//Вывожу на консоль новый вектор
+		for (int i = 0; i < newV.size(); i++) {
+			if (i == newV.size() - 1) {
+				std::cout << newV.at(i) << "}";
+			}
+			else {
+				std::cout << newV.at(i) << ", ";
+			}
+		}
+		std::cout << std::endl;
+
+		std::cout << "Printing the old vector on the screen to make sure that it still exists" << std::endl;
+		std::cout << "The Old Vector = {";
+		for (int i = 0; i < v.size(); i++) {
+			if (i == v.size() - 1) {
+				std::cout << v.at(i) << "}";
+			}
+			else {
+				std::cout << v.at(i) << ", ";
+			}
+		}
+		std::cout << std::endl;
 
 	}
 	catch (const std::exception& ex) {
