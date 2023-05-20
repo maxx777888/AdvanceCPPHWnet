@@ -18,6 +18,10 @@ public:
     T* operator[](int i){//Перегрузка оператора квадратные скобки
         return arr[i];
     }
+    template <class T>
+    const T* operator[](int i) {//Перегрузка оператора квадратные скобки с помощью const
+        return arr[i];
+    }
 
     int Size() const{//Метод возвращает размер таблицы
         return ROW * COL;
