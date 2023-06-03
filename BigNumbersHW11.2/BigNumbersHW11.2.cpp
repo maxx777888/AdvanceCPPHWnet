@@ -9,11 +9,21 @@ public:
     big_integer() {//Пустой конструктор
         this->num_str = "0";
     }
-    explicit big_integer(const std::string val) : num_str(val) {}//Конструктор
-    /*this->num_str = val;*/
+    explicit big_integer(const std::string val) : num_str(val) //Конструктор
+    {
+        if (this->num_str == "") {
+            this->num_str = "0";
+        }
+    }
+    
 
 //Перегрузка оператора умножения на число
     big_integer operator*(int rhs) {
+
+        if (rhs == 0 || this->num_str == "0") {//Проверка умножения на ноль
+            return big_integer();
+        }
+        
 
         std::string d = this->num_str;//Число записанное в строке самого объекта
         std::vector<int> this_vec;//Вспомогательный вектор нужен для умножения всех цифр в числе
@@ -159,7 +169,7 @@ public:
 
     big_integer(big_integer&& other) noexcept // конструктор перемещения
     {
-        num_str = other.num_str;
+        num_str = std::move(other.num_str);
         other.num_str = "0";
 
     }
@@ -201,5 +211,11 @@ int main()
     auto number3 = big_integer("987654321");
     auto res1 = number3 * mul_num;
     std::cout <<number3 << " * " << mul_num << " = " << res1 << std::endl; // 8888888889
+
+    std::cout << "Multiplying a class object by zero " << std::endl;
+    int zero_num = 0;
+    auto number5 = big_integer("987654321");
+    auto res2 = number5 * zero_num;
+    std::cout << number5 << " * " << zero_num << " = " << res2 << std::endl;
 
 }
